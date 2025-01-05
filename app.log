@@ -1,0 +1,82 @@
+2025-01-05 19:32:44,176 - INFO -  * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+2025-01-05 19:32:44,182 - INFO -  * Restarting with stat
+2025-01-05 19:32:44,648 - WARNING -  * Debugger is active!
+2025-01-05 19:32:44,659 - INFO -  * Debugger PIN: 502-076-962
+2025-01-05 19:32:52,661 - DEBUG - Fetching data for airport: SIN
+2025-01-05 19:32:52,661 - DEBUG - Attempting to fetch data from: https://api.flightapi.io/schedule/677a5aab3aed2814723d1b82?mode=arrivals&iata=SIN&day=1
+2025-01-05 19:32:52,667 - DEBUG - Starting new HTTPS connection (1): api.flightapi.io:443
+2025-01-05 19:32:53,914 - DEBUG - https://api.flightapi.io:443 "GET /schedule/677a5aab3aed2814723d1b82?mode=arrivals&iata=SIN&day=1 HTTP/1.1" 200 None
+2025-01-05 19:32:54,170 - DEBUG - Response status code: 200
+2025-01-05 19:32:54,216 - INFO - Response saved to: logs/response_SIN_20250105_193254.json
+2025-01-05 19:32:54,216 - INFO - Response data saved to logs/response_SIN_20250105_193254.json
+2025-01-05 19:32:54,218 - DEBUG - Successfully got raw data
+2025-01-05 19:32:54,222 - INFO - 127.0.0.1 - - [05/Jan/2025 19:32:54] "POST / HTTP/1.1" 200 -
+2025-01-05 19:33:05,782 - INFO - 127.0.0.1 - - [05/Jan/2025 19:33:05] "GET / HTTP/1.1" 200 -
+2025-01-05 19:33:08,897 - DEBUG - Fetching data for airport: LAX
+2025-01-05 19:33:08,898 - DEBUG - Attempting to fetch data from: https://api.flightapi.io/schedule/677a5aab3aed2814723d1b82?mode=arrivals&iata=LAX&day=1
+2025-01-05 19:33:08,899 - DEBUG - Starting new HTTPS connection (1): api.flightapi.io:443
+2025-01-05 19:33:10,805 - DEBUG - https://api.flightapi.io:443 "GET /schedule/677a5aab3aed2814723d1b82?mode=arrivals&iata=LAX&day=1 HTTP/1.1" 200 None
+2025-01-05 19:33:10,822 - DEBUG - Response status code: 200
+2025-01-05 19:33:10,870 - INFO - Response saved to: logs/response_LAX_20250105_193310.json
+2025-01-05 19:33:10,871 - INFO - Response data saved to logs/response_LAX_20250105_193310.json
+2025-01-05 19:33:10,872 - DEBUG - Successfully got raw data
+2025-01-05 19:33:10,873 - INFO - 127.0.0.1 - - [05/Jan/2025 19:33:10] "POST / HTTP/1.1" 200 -
+2025-01-05 19:33:30,005 - DEBUG - Fetching data for airport: SIN
+2025-01-05 19:33:30,005 - DEBUG - Attempting to fetch data from: https://api.flightapi.io/schedule/677a5aab3aed2814723d1b82?mode=arrivals&iata=SIN&day=1
+2025-01-05 19:33:30,007 - DEBUG - Starting new HTTPS connection (1): api.flightapi.io:443
+2025-01-05 19:33:31,415 - DEBUG - https://api.flightapi.io:443 "GET /schedule/677a5aab3aed2814723d1b82?mode=arrivals&iata=SIN&day=1 HTTP/1.1" 200 None
+2025-01-05 19:33:31,494 - DEBUG - Response status code: 200
+2025-01-05 19:33:31,539 - INFO - Response saved to: logs/response_SIN_20250105_193331.json
+2025-01-05 19:33:31,539 - INFO - Response data saved to logs/response_SIN_20250105_193331.json
+2025-01-05 19:33:31,541 - DEBUG - Successfully got raw data
+2025-01-05 19:33:31,542 - INFO - 127.0.0.1 - - [05/Jan/2025 19:33:31] "POST / HTTP/1.1" 200 -
+2025-01-05 23:01:22,086 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-05 23:01:22,101 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-05 23:01:22,101 - INFO -  * Restarting with stat
+2025-01-05 23:01:22,937 - WARNING -  * Debugger is active!
+2025-01-05 23:01:23,690 - INFO -  * Debugger PIN: 502-076-962
+2025-01-05 23:01:52,326 - INFO - 127.0.0.1 - - [05/Jan/2025 23:01:52] "GET / HTTP/1.1" 200 -
+2025-01-05 23:01:57,101 - DEBUG - Fetching data for airport: SIN
+2025-01-05 23:01:57,101 - DEBUG - Attempting to fetch data from: https://api.flightapi.io/schedule/677a5aab3aed2814723d1b82?mode=arrivals&iata=SIN&day=1
+2025-01-05 23:01:57,109 - DEBUG - Starting new HTTPS connection (1): api.flightapi.io:443
+2025-01-05 23:01:58,698 - DEBUG - https://api.flightapi.io:443 "GET /schedule/677a5aab3aed2814723d1b82?mode=arrivals&iata=SIN&day=1 HTTP/11" 200 None
+2025-01-05 23:01:58,706 - DEBUG - Response status code: 200
+2025-01-05 23:01:58,971 - INFO - Response saved to: logs/response_SIN_20250105_230158.json
+2025-01-05 23:01:58,973 - INFO - Response data saved to logs/response_SIN_20250105_230158.json
+2025-01-05 23:01:58,974 - DEBUG - Successfully got raw data
+2025-01-05 23:01:58,974 - INFO - 127.0.0.1 - - [05/Jan/2025 23:01:58] "POST / HTTP/1.1" 200 -
+2025-01-05 23:06:38,894 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-05 23:06:38,894 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-05 23:06:38,902 - INFO -  * Restarting with stat
+2025-01-05 23:06:41,543 - WARNING -  * Debugger is active!
+2025-01-05 23:06:41,559 - INFO -  * Debugger PIN: 502-076-962
+2025-01-05 23:06:44,582 - INFO - 127.0.0.1 - - [05/Jan/2025 23:06:44] "GET / HTTP/1.1" 200 -
+2025-01-05 23:06:48,101 - DEBUG - Fetching data for airport: SIN
+2025-01-05 23:06:48,101 - DEBUG - Attempting to fetch data from: https://api.flightapi.io/schedule/677a5aab3aed2814723d1b82?mode=arrivals&iata=SIN&day=1
+2025-01-05 23:06:48,485 - DEBUG - Starting new HTTPS connection (1): api.flightapi.io:443
+2025-01-05 23:06:50,014 - DEBUG - https://api.flightapi.io:443 "GET /schedule/677a5aab3aed2814723d1b82?mode=arrivals&iata=SIN&day=1 HTTP/11" 200 None
+2025-01-05 23:06:50,305 - DEBUG - Response status code: 200
+2025-01-05 23:06:50,432 - INFO - Response saved to: logs/response_SIN_20250105_230650.json
+2025-01-05 23:06:50,432 - INFO - Response data saved to logs/response_SIN_20250105_230650.json
+2025-01-05 23:06:50,434 - DEBUG - Successfully got raw data
+2025-01-05 23:06:50,436 - INFO - 127.0.0.1 - - [05/Jan/2025 23:06:50] "POST / HTTP/1.1" 200 -
+2025-01-05 23:08:13,009 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.5:5000
+2025-01-05 23:08:13,009 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-05 23:08:13,025 - INFO -  * Restarting with stat
+2025-01-05 23:08:13,850 - WARNING -  * Debugger is active!
+2025-01-05 23:08:13,881 - INFO -  * Debugger PIN: 502-076-962
+2025-01-05 23:08:18,588 - INFO - 127.0.0.1 - - [05/Jan/2025 23:08:18] "GET / HTTP/1.1" 200 -
+2025-01-05 23:08:27,370 - DEBUG - Fetching data for airport: SIN
+2025-01-05 23:08:27,370 - DEBUG - Attempting to fetch data from: https://api.flightapi.io/schedule/677a5aab3aed2814723d1b82?mode=arrivals&iata=SIN&day=1
+2025-01-05 23:08:27,378 - DEBUG - Starting new HTTPS connection (1): api.flightapi.io:443
+2025-01-05 23:08:28,851 - DEBUG - https://api.flightapi.io:443 "GET /schedule/677a5aab3aed2814723d1b82?mode=arrivals&iata=SIN&day=1 HTTP/11" 200 None
+2025-01-05 23:08:29,064 - DEBUG - Response status code: 200
+2025-01-05 23:08:29,173 - INFO - Response saved to: logs/response_SIN_20250105_230829.json
+2025-01-05 23:08:29,173 - INFO - Response data saved to logs/response_SIN_20250105_230829.json
+2025-01-05 23:08:29,174 - DEBUG - Successfully got raw data
+2025-01-05 23:08:29,174 - INFO - 127.0.0.1 - - [05/Jan/2025 23:08:29] "POST / HTTP/1.1" 200 -
