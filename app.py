@@ -8,14 +8,12 @@ from datetime import datetime
 
 # Initialize Flask app
 app = Flask(__name__)
-# load_dotenv()
 
 # Set up logging
 logging.basicConfig(filename='app.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Load API key from environment variable
-# API_KEY = os.getenv("API_KEY", "default_api_key_here")
-API_KEY = "677a5aab3aed2814723d1b82"
+API_KEY = "677ac88f3a45b414acd274ed"
 
 # Ensure logs directory exists
 if not os.path.exists('logs'):
