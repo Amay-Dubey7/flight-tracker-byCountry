@@ -21,7 +21,6 @@ engine = create_engine("sqlite:///flights.db")
 Session = sessionmaker(bind=engine)
 
 # Initialize OpenAI API Key
-# client = OpenAI(api_key="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")
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 
