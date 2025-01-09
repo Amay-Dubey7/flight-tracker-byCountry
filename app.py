@@ -1,120 +1,182 @@
 from flask import Flask, render_template, request
-import requests
-from collections import defaultdict
-import os
-import json
+from openai import OpenAI
 import logging
-from datetime import datetime
+from sqlalchemy import create_engine, text
+from sqlalchemy.orm import sessionmaker
+from db import Flight, Base
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__)
 
 # Set up logging
-logging.basicConfig(filename='app.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='app.log', level=logging.DEBUG, 
+                   format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Load API key from environment variable
-API_KEY = "677ac88f3a45b414acd274ed"
+# Create database connection
+engine = create_engine("sqlite:///flights.db")
+Session = sessionmaker(bind=engine)
 
-# Ensure logs directory exists
-if not os.path.exists('logs'):
-    os.makedirs('logs')
+# Initialize OpenAI API Key
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
-def save_response_to_file(data, airport_code):
+
+def get_unique_airports():
     """
-    Save API response to a JSON file with timestamp
+    Get list of unique airport codes from the database.
     """
-    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    filename = f'logs/response_{airport_code}_{timestamp}.json'
-    
+    session = Session()
     try:
-        with open(filename, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=2, ensure_ascii=False)
-        logging.info(f"Response saved to: {filename}")
-        return filename
+        airports = session.query(Flight.destination_airport)\
+                         .distinct()\
+                         .order_by(Flight.destination_airport)\
+                         .all()
+        return [airport[0] for airport in airports]
+    finally:
+        session.close()
+
+def generate_sql_query(question, airport_code):
+    """
+    Use LLM to generate appropriate SQL query based on the question.
+    """
+    # Country code to full name mapping
+    country_mapping = {
+        "US": "United States",
+        "UK": "United Kingdom",
+        "UAE": "United Arab Emirates",
+        "SG": "Singapore",
+        "HK": "Hong Kong",
+        "NL": "Netherlands"
+    }
+    
+    # Replace country codes with full names in the question
+    modified_question = question
+    for code, country in country_mapping.items():
+        modified_question = modified_question.replace(code, country)
+
+    prompt = f"""
+    Given the following SQLite database table structure:
+    Table name: flights
+    Database: flights.db
+    Columns:
+    - destination_airport (String): Airport code for destination
+    - src_airline_code (String): Airline code
+    - src_country (String): Full country name of origin
+    - src_city (String): City of origin
+    - src_identification_codeshare (String): Codeshare identification
+    - flight_number (String): Flight number
+    - arrived_late (String): '1' or '0' indicating if flight arrived late
+    - estimated_late (String): '1' or '0' indicating if flight was estimated to be late
+
+    The user is asking about airport: {airport_code}
+    Question: {modified_question}
+
+    Generate a SQL query to answer this question. The query should:
+    1. Always include WHERE destination_airport = '{airport_code}'
+    2. Be specific to the question asked
+    3. Use appropriate aggregations (COUNT, AVG, SUM) when needed
+    4. Use proper grouping when aggregating
+    5. Include CASE statements for Yes/No counting if needed
+    6. Be a valid SQLite query
+    7. Use proper string comparisons for 'Yes'/'No' fields
+    
+    Return only the SQL query without any explanation or comments.
+    """
+
+    try:
+        completion = client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are a SQL query generator. Return only the SQL query without any explanation, comments, or markdown formatting."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.1,
+            max_tokens=500
+        )
+        return completion.choices[0].message.content.strip()
     except Exception as e:
-        logging.error(f"Error saving response: {str(e)}")
+        logging.error(f"Error generating SQL query: {str(e)}")
         return None
 
-def get_flight_data(airport_code):
+def execute_sql_query(sql_query):
     """
-    Fetch flight data from FlightAPI.io for a specific airport
+    Execute the generated SQL query and return results.
     """
-    url = f'https://api.flightapi.io/schedule/{API_KEY}?mode=arrivals&iata={airport_code}&day=1'
-    
-    logging.debug(f"Attempting to fetch data from: {url}")
-    
+    session = Session()
     try:
-        response = requests.get(url)
-        logging.debug(f"Response status code: {response.status_code}")
-        
-        if response.status_code == 200:
-            data = response.json()
-            saved_file = save_response_to_file(data, airport_code)
-            if saved_file:
-                logging.info(f"Response data saved to {saved_file}")
-            return data
-        else:
-            error_data = {
-                'status_code': response.status_code,
-                'error': response.text
-            }
-            save_response_to_file(error_data, f"{airport_code}_error")
-            logging.error(f"Error response: {response.text}")
-            return None
+        result = session.execute(text(sql_query))
+        columns = result.keys()
+        data = [dict(zip(columns, row)) for row in result]
+        return data
     except Exception as e:
-        logging.error(f"Error fetching data: {str(e)}")
+        logging.error(f"Error executing SQL query: {str(e)}")
         return None
+    finally:
+        session.close()
 
-def process_flight_data(data):
+def format_sql_results(results, question):
     """
-    Process the flight data to get country-wise flight counts
+    Use LLM to format SQL results into a natural language response.
     """
-    country_flights = defaultdict(int)
+    prompt = f"""
+    Question: {question}
+    SQL Results: {results}
     
+    Please provide a clear, natural language response based on these SQL query results.
+    Focus on directly answering the question while including specific numbers and facts from the data.
+    If the results are empty, indicate that no data was found.
+    """
+
     try:
-        arrivals = data.get('airport', {}).get('pluginData', {}).get('schedule', {}).get('arrivals', {}).get('data', [])
-        
-        for flight_data in arrivals:
-            country = flight_data.get('flight', {}).get('airport', {}).get('origin', {}).get('position', {}).get('country', {}).get('name')
-            if country:
-                country_flights[country] += 1
-        
-        result = [{'country': country, 'flights': count} for country, count in country_flights.items()]
-        
-        return sorted(result, key=lambda x: x['flights'], reverse=True)
-        
+        completion = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": "You are a data interpreter. Provide clear, concise answers based on SQL query results and beautify the results.Do not write things like according to SQL results. Answer in human like way."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.7
+        )
+        return completion.choices[0].message.content.strip()
     except Exception as e:
-        logging.error(f"Error processing flight data: {str(e)}")
-        logging.debug(f"Data structure: {json.dumps(data, indent=2)[:500]}")
-        return []
+        logging.error(f"Error formatting results: {str(e)}")
+        return "Sorry, there was an error processing the results."
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    flight_data = None
+    answer = None
     error = None
-    airport_code = ''
-    
+    selected_airport = None
+    airports = get_unique_airports()
+
     if request.method == 'POST':
-        airport_code = request.form.get('airport_code', '').upper()
-        
-        if len(airport_code) != 3:
-            error = "Please enter a valid 3-character airport code"
+        selected_airport = request.form.get('airport_code')
+        question = request.form.get('question', '').strip()
+
+        if not selected_airport or selected_airport not in airports:
+            error = "Please select a valid airport."
+        elif not question:
+            error = "Please enter a question."
         else:
-            logging.debug(f"Fetching data for airport: {airport_code}")
-            raw_data = get_flight_data(airport_code)
-            
-            if raw_data:
-                logging.debug("Successfully got raw data")
-                flight_data = process_flight_data(raw_data)
-                if not flight_data:
-                    error = "No flights found for this airport"
+            # Generate and execute SQL query
+            sql_query = generate_sql_query(question, selected_airport)
+            print('SQL query is :', sql_query)
+            if sql_query:
+                results = execute_sql_query(sql_query)
+                if results is not None:
+                    answer = format_sql_results(results, question)
+                else:
+                    error = "Error executing the query."
             else:
-                error = "Unable to fetch flight data. Please try again later."
-    
+                error = "Error generating the query."
+
     return render_template('index.html', 
-                         flight_data=flight_data, 
-                         error=error, 
-                         airport_code=airport_code)
+                         airports=airports,
+                         selected_airport=selected_airport,
+                         answer=answer,
+                         error=error)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+    app.run(debug=True, host='0.0.0.0', port=5000)
