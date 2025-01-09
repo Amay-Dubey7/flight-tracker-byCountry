@@ -1208,3 +1208,507 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 2025-01-09 14:23:20,157 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers({'date': 'Thu, 09 Jan 2025 08:53:20 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-expose-headers': 'X-Request-ID', 'openai-organization': 'prescinto-technologies', 'openai-processing-ms': '540', 'openai-version': '2020-10-01', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '2000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '1999846', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '4ms', 'x-request-id': 'req_60671856841dfcf726ab4bcc1177ddc1', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8ff3323befaef56b-BOM', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
 2025-01-09 14:23:20,157 - DEBUG - request_id: req_60671856841dfcf726ab4bcc1177ddc1
 2025-01-09 14:23:20,170 - INFO - 127.0.0.1 - - [09/Jan/2025 14:23:20] "POST / HTTP/1.1" 200 -
+2025-01-09 14:47:45,313 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.74:5000
+2025-01-09 14:47:45,336 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-09 14:47:45,336 - INFO -  * Restarting with stat
+2025-01-09 14:47:47,556 - WARNING -  * Debugger is active!
+2025-01-09 14:47:47,571 - INFO -  * Debugger PIN: 502-076-962
+2025-01-09 14:47:51,944 - INFO - 127.0.0.1 - - [09/Jan/2025 14:47:51] "GET / HTTP/1.1" 200 -
+2025-01-09 14:47:57,617 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a SQL query generator. Return only the SQL query without any explanation, comments, or markdown formatting.'}, {'role': 'user', 'content': "\n    Given the following SQLite database table structure:\n    Table name: flights\n    Database: flights.db\n    Columns:\n    - destination_airport (String): Airport code for destination\n    - src_airline_code (String): Airline code\n    - src_country (String): Full country name of origin\n    - src_city (String): City of origin\n    - src_identification_codeshare (String): Codeshare identification\n    - flight_number (String): Flight number\n    - arrived_late (String): '1' or '0' indicating if flight arrived late\n    - estimated_late (String): '1' or '0' indicating if flight was estimated to be late\n\n    The user is asking about airport: HKG\n    Question: How many flights arrived from Germany?\n\n    Generate a SQL query to answer this question. The query should:\n    1. Always include WHERE destination_airport = 'HKG'\n    2. Be specific to the question asked\n    3. Use appropriate aggregations (COUNT, AVG, SUM) when needed\n    4. Use proper grouping when aggregating\n    5. Include CASE statements for Yes/No counting if needed\n    6. Be a valid SQLite query\n    7. Use proper string comparisons for 'Yes'/'No' fields\n    \n    Return only the SQL query without any explanation or comments.\n    "}], 'model': 'gpt-4', 'max_tokens': 500, 'temperature': 0.1}}
+2025-01-09 14:47:57,645 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-01-09 14:47:57,645 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-01-09 14:47:57,876 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000018A3D2E1340>
+2025-01-09 14:47:57,876 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x0000018A3D0578C0> server_hostname='api.openai.com' timeout=5.0
+2025-01-09 14:47:58,580 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000018A3D2E13D0>
+2025-01-09 14:47:58,580 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-09 14:47:58,581 - DEBUG - send_request_headers.complete
+2025-01-09 14:47:58,581 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-09 14:47:58,581 - DEBUG - send_request_body.complete
+2025-01-09 14:47:58,581 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-09 14:48:06,092 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 09 Jan 2025 09:18:06 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'prescinto-technologies'), (b'openai-processing-ms', b'7205'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'10000'), (b'x-ratelimit-limit-tokens', b'300000'), (b'x-ratelimit-remaining-requests', b'9999'), (b'x-ratelimit-remaining-tokens', b'299168'), (b'x-ratelimit-reset-requests', b'6ms'), (b'x-ratelimit-reset-tokens', b'166ms'), (b'x-request-id', b'req_5ace2f3659b1e165e6bbbda9f27f479c'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=Fiv6pKgdQX56R7zOsO0BndRvtrdEs0Ig1uSFh0qX_6s-1736414286-1.0.1.1-Qg_THV6fS1W_qA5aOHvNJZKwmemVUQOzOBPrOstIuuFh32fB4pYmsyC0gDbQYOaOQ5cW4LCMkFvUvBKc83anQA; path=/; expires=Thu, 09-Jan-25 09:48:06 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=DFKON1IBxI4jSe0PyN6emt0t4SOBMEv7N5gfqbLEVo4-1736414286085-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ff3565939463c88-BOM'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-09 14:48:06,093 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 14:48:06,093 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-09 14:48:06,102 - DEBUG - receive_response_body.complete
+2025-01-09 14:48:06,102 - DEBUG - response_closed.started
+2025-01-09 14:48:06,102 - DEBUG - response_closed.complete
+2025-01-09 14:48:06,102 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Thu, 09 Jan 2025 09:18:06 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'prescinto-technologies'), ('openai-processing-ms', '7205'), ('openai-version', '2020-10-01'), ('x-ratelimit-limit-requests', '10000'), ('x-ratelimit-limit-tokens', '300000'), ('x-ratelimit-remaining-requests', '9999'), ('x-ratelimit-remaining-tokens', '299168'), ('x-ratelimit-reset-requests', '6ms'), ('x-ratelimit-reset-tokens', '166ms'), ('x-request-id', 'req_5ace2f3659b1e165e6bbbda9f27f479c'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=Fiv6pKgdQX56R7zOsO0BndRvtrdEs0Ig1uSFh0qX_6s-1736414286-1.0.1.1-Qg_THV6fS1W_qA5aOHvNJZKwmemVUQOzOBPrOstIuuFh32fB4pYmsyC0gDbQYOaOQ5cW4LCMkFvUvBKc83anQA; path=/; expires=Thu, 09-Jan-25 09:48:06 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=DFKON1IBxI4jSe0PyN6emt0t4SOBMEv7N5gfqbLEVo4-1736414286085-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8ff3565939463c88-BOM'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-01-09 14:48:06,103 - DEBUG - request_id: req_5ace2f3659b1e165e6bbbda9f27f479c
+2025-01-09 14:48:06,117 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a data interpreter. Provide clear, concise answers based on SQL query results and beautify the results.Do not write things like according to SQL results. Answer in human like way.'}, {'role': 'user', 'content': "\n    Question: How many flights arrived from Germany?\n    SQL Results: [{'COUNT(*)': 12}]\n    \n    Please provide a clear, natural language response based on these SQL query results.\n    Focus on directly answering the question while including specific numbers and facts from the data.\n    If the results are empty, indicate that no data was found.\n    "}], 'model': 'gpt-4o', 'temperature': 0.7}}
+2025-01-09 14:48:06,118 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-01-09 14:48:06,118 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-09 14:48:06,119 - DEBUG - send_request_headers.complete
+2025-01-09 14:48:06,119 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-09 14:48:06,119 - DEBUG - send_request_body.complete
+2025-01-09 14:48:06,119 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-09 14:48:06,394 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Thu, 09 Jan 2025 09:18:06 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'301'), (b'Connection', b'keep-alive'), (b'vary', b'Origin'), (b'x-request-id', b'req_d6115817e15b6e611af52a649d4e8300'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ff356886bc63c88-BOM'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-09 14:48:06,394 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-01-09 14:48:06,394 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-09 14:48:06,394 - DEBUG - receive_response_body.complete
+2025-01-09 14:48:06,394 - DEBUG - response_closed.started
+2025-01-09 14:48:06,395 - DEBUG - response_closed.complete
+2025-01-09 14:48:06,395 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "401 Unauthorized" Headers({'date': 'Thu, 09 Jan 2025 09:18:06 GMT', 'content-type': 'application/json; charset=utf-8', 'content-length': '301', 'connection': 'keep-alive', 'vary': 'Origin', 'x-request-id': 'req_d6115817e15b6e611af52a649d4e8300', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8ff356886bc63c88-BOM', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-01-09 14:48:06,396 - DEBUG - request_id: req_d6115817e15b6e611af52a649d4e8300
+2025-01-09 14:48:06,396 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "C:\Users\amayd\OneDrive\Desktop\project flights\venv\lib\site-packages\openai\_base_client.py", line 1043, in _request
+    response.raise_for_status()
+  File "C:\Users\amayd\OneDrive\Desktop\project flights\venv\lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-01-09 14:48:06,398 - DEBUG - Not retrying
+2025-01-09 14:48:06,398 - DEBUG - Re-raising status error
+2025-01-09 14:48:06,399 - ERROR - Error formatting results: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-9sFGj***************************************ov7G. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-01-09 14:48:06,399 - INFO - 127.0.0.1 - - [09/Jan/2025 14:48:06] "POST / HTTP/1.1" 200 -
+2025-01-09 14:48:28,112 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a SQL query generator. Return only the SQL query without any explanation, comments, or markdown formatting.'}, {'role': 'user', 'content': "\n    Given the following SQLite database table structure:\n    Table name: flights\n    Database: flights.db\n    Columns:\n    - destination_airport (String): Airport code for destination\n    - src_airline_code (String): Airline code\n    - src_country (String): Full country name of origin\n    - src_city (String): City of origin\n    - src_identification_codeshare (String): Codeshare identification\n    - flight_number (String): Flight number\n    - arrived_late (String): '1' or '0' indicating if flight arrived late\n    - estimated_late (String): '1' or '0' indicating if flight was estimated to be late\n\n    The user is asking about airport: SIN\n    Question: How many flights arrived from Germany?\n\n    Generate a SQL query to answer this question. The query should:\n    1. Always include WHERE destination_airport = 'SIN'\n    2. Be specific to the question asked\n    3. Use appropriate aggregations (COUNT, AVG, SUM) when needed\n    4. Use proper grouping when aggregating\n    5. Include CASE statements for Yes/No counting if needed\n    6. Be a valid SQLite query\n    7. Use proper string comparisons for 'Yes'/'No' fields\n    \n    Return only the SQL query without any explanation or comments.\n    "}], 'model': 'gpt-4', 'max_tokens': 500, 'temperature': 0.1}}
+2025-01-09 14:48:28,113 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-01-09 14:48:28,113 - DEBUG - close.started
+2025-01-09 14:48:28,113 - DEBUG - close.complete
+2025-01-09 14:48:28,114 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-01-09 14:48:28,155 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000018A3D393520>
+2025-01-09 14:48:28,155 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x0000018A3D0578C0> server_hostname='api.openai.com' timeout=5.0
+2025-01-09 14:48:28,176 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000018A3D3935E0>
+2025-01-09 14:48:28,176 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-09 14:48:28,177 - DEBUG - send_request_headers.complete
+2025-01-09 14:48:28,177 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-09 14:48:28,177 - DEBUG - send_request_body.complete
+2025-01-09 14:48:28,177 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-09 14:48:28,446 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Thu, 09 Jan 2025 09:18:28 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'301'), (b'Connection', b'keep-alive'), (b'vary', b'Origin'), (b'x-request-id', b'req_e8f50e2945bd30fe64ad721bf432ea42'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ff357123d313a2a-BOM'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-09 14:48:28,446 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-01-09 14:48:28,446 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-09 14:48:28,447 - DEBUG - receive_response_body.complete
+2025-01-09 14:48:28,447 - DEBUG - response_closed.started
+2025-01-09 14:48:28,447 - DEBUG - response_closed.complete
+2025-01-09 14:48:28,447 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "401 Unauthorized" Headers({'date': 'Thu, 09 Jan 2025 09:18:28 GMT', 'content-type': 'application/json; charset=utf-8', 'content-length': '301', 'connection': 'keep-alive', 'vary': 'Origin', 'x-request-id': 'req_e8f50e2945bd30fe64ad721bf432ea42', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8ff357123d313a2a-BOM', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-01-09 14:48:28,447 - DEBUG - request_id: req_e8f50e2945bd30fe64ad721bf432ea42
+2025-01-09 14:48:28,447 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "C:\Users\amayd\OneDrive\Desktop\project flights\venv\lib\site-packages\openai\_base_client.py", line 1043, in _request
+    response.raise_for_status()
+  File "C:\Users\amayd\OneDrive\Desktop\project flights\venv\lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-01-09 14:48:28,447 - DEBUG - Not retrying
+2025-01-09 14:48:28,447 - DEBUG - Re-raising status error
+2025-01-09 14:48:28,448 - ERROR - Error generating SQL query: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-9sFGj***************************************ov7G. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-01-09 14:48:28,448 - INFO - 127.0.0.1 - - [09/Jan/2025 14:48:28] "POST / HTTP/1.1" 200 -
+2025-01-09 14:49:17,780 - INFO -  * Detected change in 'C:\\Users\\amayd\\OneDrive\\Desktop\\project flights\\app.py', reloading
+2025-01-09 14:49:18,109 - INFO -  * Restarting with stat
+2025-01-09 14:49:22,585 - WARNING -  * Debugger is active!
+2025-01-09 14:49:22,601 - INFO -  * Debugger PIN: 502-076-962
+2025-01-09 14:49:37,205 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.74:5000
+2025-01-09 14:49:37,205 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-09 14:49:37,205 - INFO -  * Restarting with stat
+2025-01-09 14:49:38,607 - WARNING -  * Debugger is active!
+2025-01-09 14:49:38,618 - INFO -  * Debugger PIN: 502-076-962
+2025-01-09 14:49:39,659 - INFO - 127.0.0.1 - - [09/Jan/2025 14:49:39] "GET / HTTP/1.1" 200 -
+2025-01-09 14:49:46,249 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a SQL query generator. Return only the SQL query without any explanation, comments, or markdown formatting.'}, {'role': 'user', 'content': "\n    Given the following SQLite database table structure:\n    Table name: flights\n    Database: flights.db\n    Columns:\n    - destination_airport (String): Airport code for destination\n    - src_airline_code (String): Airline code\n    - src_country (String): Full country name of origin\n    - src_city (String): City of origin\n    - src_identification_codeshare (String): Codeshare identification\n    - flight_number (String): Flight number\n    - arrived_late (String): '1' or '0' indicating if flight arrived late\n    - estimated_late (String): '1' or '0' indicating if flight was estimated to be late\n\n    The user is asking about airport: SIN\n    Question: Which flights arrived late ?\n\n    Generate a SQL query to answer this question. The query should:\n    1. Always include WHERE destination_airport = 'SIN'\n    2. Be specific to the question asked\n    3. Use appropriate aggregations (COUNT, AVG, SUM) when needed\n    4. Use proper grouping when aggregating\n    5. Include CASE statements for Yes/No counting if needed\n    6. Be a valid SQLite query\n    7. Use proper string comparisons for 'Yes'/'No' fields\n    \n    Return only the SQL query without any explanation or comments.\n    "}], 'model': 'gpt-4', 'max_tokens': 500, 'temperature': 0.1}}
+2025-01-09 14:49:46,261 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-01-09 14:49:46,262 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-01-09 14:49:46,301 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002252AC27FD0>
+2025-01-09 14:49:46,302 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000002252A9B78C0> server_hostname='api.openai.com' timeout=5.0
+2025-01-09 14:49:46,323 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002252AC44460>
+2025-01-09 14:49:46,323 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-09 14:49:46,323 - DEBUG - send_request_headers.complete
+2025-01-09 14:49:46,323 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-09 14:49:46,323 - DEBUG - send_request_body.complete
+2025-01-09 14:49:46,323 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-09 14:49:46,587 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Thu, 09 Jan 2025 09:19:46 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'301'), (b'Connection', b'keep-alive'), (b'vary', b'Origin'), (b'x-request-id', b'req_2587b579ffd0caa8d56420753ee2c999'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=sRlxpm_sXVsUFxmZWXd9.3hZs9xdK1zsUnnxWNXDRIo-1736414386-1.0.1.1-WSvGS2v6hUkWI7WOBhASr9f1j15uY7nCK53YfGWp64sjVoBBEzFkBRNtaVjM1VE9v2SFw5FhfESAy4KtfjBaLQ; path=/; expires=Thu, 09-Jan-25 09:49:46 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=nc8ITxRIDXQMsk.LKi.8f4e9pUEh1uTwFQAOwqFioR4-1736414386589-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ff358faa8af3c04-BOM'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-09 14:49:46,588 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-01-09 14:49:46,588 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-09 14:49:46,588 - DEBUG - receive_response_body.complete
+2025-01-09 14:49:46,588 - DEBUG - response_closed.started
+2025-01-09 14:49:46,588 - DEBUG - response_closed.complete
+2025-01-09 14:49:46,588 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "401 Unauthorized" Headers([('date', 'Thu, 09 Jan 2025 09:19:46 GMT'), ('content-type', 'application/json; charset=utf-8'), ('content-length', '301'), ('connection', 'keep-alive'), ('vary', 'Origin'), ('x-request-id', 'req_2587b579ffd0caa8d56420753ee2c999'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=sRlxpm_sXVsUFxmZWXd9.3hZs9xdK1zsUnnxWNXDRIo-1736414386-1.0.1.1-WSvGS2v6hUkWI7WOBhASr9f1j15uY7nCK53YfGWp64sjVoBBEzFkBRNtaVjM1VE9v2SFw5FhfESAy4KtfjBaLQ; path=/; expires=Thu, 09-Jan-25 09:49:46 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=nc8ITxRIDXQMsk.LKi.8f4e9pUEh1uTwFQAOwqFioR4-1736414386589-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8ff358faa8af3c04-BOM'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-01-09 14:49:46,589 - DEBUG - request_id: req_2587b579ffd0caa8d56420753ee2c999
+2025-01-09 14:49:46,589 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "C:\Users\amayd\OneDrive\Desktop\project flights\venv\lib\site-packages\openai\_base_client.py", line 1043, in _request
+    response.raise_for_status()
+  File "C:\Users\amayd\OneDrive\Desktop\project flights\venv\lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-01-09 14:49:46,590 - DEBUG - Not retrying
+2025-01-09 14:49:46,590 - DEBUG - Re-raising status error
+2025-01-09 14:49:46,591 - ERROR - Error generating SQL query: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-9sFGj***************************************ov7G. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-01-09 14:49:46,591 - INFO - 127.0.0.1 - - [09/Jan/2025 14:49:46] "POST / HTTP/1.1" 200 -
+2025-01-09 14:50:04,495 - INFO -  * Detected change in 'C:\\Users\\amayd\\OneDrive\\Desktop\\project flights\\app.py', reloading
+2025-01-09 14:50:04,891 - INFO -  * Restarting with stat
+2025-01-09 14:50:09,396 - WARNING -  * Debugger is active!
+2025-01-09 14:50:09,411 - INFO -  * Debugger PIN: 502-076-962
+2025-01-09 14:50:16,999 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.74:5000
+2025-01-09 14:50:17,000 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-09 14:50:17,001 - INFO -  * Restarting with stat
+2025-01-09 14:50:18,234 - WARNING -  * Debugger is active!
+2025-01-09 14:50:18,250 - INFO -  * Debugger PIN: 502-076-962
+2025-01-09 14:50:20,951 - INFO - 127.0.0.1 - - [09/Jan/2025 14:50:20] "GET / HTTP/1.1" 200 -
+2025-01-09 14:50:27,401 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a SQL query generator. Return only the SQL query without any explanation, comments, or markdown formatting.'}, {'role': 'user', 'content': "\n    Given the following SQLite database table structure:\n    Table name: flights\n    Database: flights.db\n    Columns:\n    - destination_airport (String): Airport code for destination\n    - src_airline_code (String): Airline code\n    - src_country (String): Full country name of origin\n    - src_city (String): City of origin\n    - src_identification_codeshare (String): Codeshare identification\n    - flight_number (String): Flight number\n    - arrived_late (String): '1' or '0' indicating if flight arrived late\n    - estimated_late (String): '1' or '0' indicating if flight was estimated to be late\n\n    The user is asking about airport: SIN\n    Question: How many flights arrived from Germany?\n\n    Generate a SQL query to answer this question. The query should:\n    1. Always include WHERE destination_airport = 'SIN'\n    2. Be specific to the question asked\n    3. Use appropriate aggregations (COUNT, AVG, SUM) when needed\n    4. Use proper grouping when aggregating\n    5. Include CASE statements for Yes/No counting if needed\n    6. Be a valid SQLite query\n    7. Use proper string comparisons for 'Yes'/'No' fields\n    \n    Return only the SQL query without any explanation or comments.\n    "}], 'model': 'gpt-4', 'max_tokens': 500, 'temperature': 0.1}}
+2025-01-09 14:50:27,411 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-01-09 14:50:27,411 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-01-09 14:50:27,471 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001BA4A411340>
+2025-01-09 14:50:27,471 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001BA4A1878C0> server_hostname='api.openai.com' timeout=5.0
+2025-01-09 14:50:27,494 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001BA4A4113D0>
+2025-01-09 14:50:27,495 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-09 14:50:27,495 - DEBUG - send_request_headers.complete
+2025-01-09 14:50:27,495 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-09 14:50:27,495 - DEBUG - send_request_body.complete
+2025-01-09 14:50:27,495 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-09 14:50:27,766 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Thu, 09 Jan 2025 09:20:27 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'301'), (b'Connection', b'keep-alive'), (b'vary', b'Origin'), (b'x-request-id', b'req_73b77a5da9b37ecd22922f82d8cb8d65'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=DjojWlOs7Jf8SNl0H6cGvPwHCuGjLr3apZfyRXJ8fRY-1736414427-1.0.1.1-cmTWZn74KMHKC_bIykr5aqrVgBkOKpEiGf4VVi4jL46LCX_oi0eo3yeCOB0v4z2.tYtugJHsdLsg.E8sRune8w; path=/; expires=Thu, 09-Jan-25 09:50:27 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=2DCPgyATub2G8z7OBE8TNCQO42m4dJKbqDfe0LU.3GA-1736414427759-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ff359fbf8923b79-BOM'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-09 14:50:27,767 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-01-09 14:50:27,767 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-09 14:50:27,767 - DEBUG - receive_response_body.complete
+2025-01-09 14:50:27,767 - DEBUG - response_closed.started
+2025-01-09 14:50:27,767 - DEBUG - response_closed.complete
+2025-01-09 14:50:27,767 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "401 Unauthorized" Headers([('date', 'Thu, 09 Jan 2025 09:20:27 GMT'), ('content-type', 'application/json; charset=utf-8'), ('content-length', '301'), ('connection', 'keep-alive'), ('vary', 'Origin'), ('x-request-id', 'req_73b77a5da9b37ecd22922f82d8cb8d65'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=DjojWlOs7Jf8SNl0H6cGvPwHCuGjLr3apZfyRXJ8fRY-1736414427-1.0.1.1-cmTWZn74KMHKC_bIykr5aqrVgBkOKpEiGf4VVi4jL46LCX_oi0eo3yeCOB0v4z2.tYtugJHsdLsg.E8sRune8w; path=/; expires=Thu, 09-Jan-25 09:50:27 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=2DCPgyATub2G8z7OBE8TNCQO42m4dJKbqDfe0LU.3GA-1736414427759-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8ff359fbf8923b79-BOM'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-01-09 14:50:27,767 - DEBUG - request_id: req_73b77a5da9b37ecd22922f82d8cb8d65
+2025-01-09 14:50:27,767 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "C:\Users\amayd\OneDrive\Desktop\project flights\venv\lib\site-packages\openai\_base_client.py", line 1043, in _request
+    response.raise_for_status()
+  File "C:\Users\amayd\OneDrive\Desktop\project flights\venv\lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-01-09 14:50:27,957 - DEBUG - Not retrying
+2025-01-09 14:50:27,957 - DEBUG - Re-raising status error
+2025-01-09 14:50:27,958 - ERROR - Error generating SQL query: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-9sFGj***************************************ov7G. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-01-09 14:50:27,959 - INFO - 127.0.0.1 - - [09/Jan/2025 14:50:27] "POST / HTTP/1.1" 200 -
+2025-01-09 14:50:37,510 - INFO -  * Detected change in 'C:\\Users\\amayd\\OneDrive\\Desktop\\project flights\\app.py', reloading
+2025-01-09 14:50:37,624 - INFO -  * Detected change in 'C:\\Users\\amayd\\OneDrive\\Desktop\\project flights\\app.py', reloading
+2025-01-09 14:50:37,747 - INFO -  * Restarting with stat
+2025-01-09 14:50:39,086 - WARNING -  * Debugger is active!
+2025-01-09 14:50:39,102 - INFO -  * Debugger PIN: 502-076-962
+2025-01-09 14:50:41,984 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.74:5000
+2025-01-09 14:50:41,984 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-09 14:50:41,992 - INFO -  * Restarting with stat
+2025-01-09 14:50:43,225 - WARNING -  * Debugger is active!
+2025-01-09 14:50:43,241 - INFO -  * Debugger PIN: 502-076-962
+2025-01-09 14:50:53,815 - INFO - 127.0.0.1 - - [09/Jan/2025 14:50:53] "GET / HTTP/1.1" 200 -
+2025-01-09 14:50:59,127 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a SQL query generator. Return only the SQL query without any explanation, comments, or markdown formatting.'}, {'role': 'user', 'content': "\n    Given the following SQLite database table structure:\n    Table name: flights\n    Database: flights.db\n    Columns:\n    - destination_airport (String): Airport code for destination\n    - src_airline_code (String): Airline code\n    - src_country (String): Full country name of origin\n    - src_city (String): City of origin\n    - src_identification_codeshare (String): Codeshare identification\n    - flight_number (String): Flight number\n    - arrived_late (String): '1' or '0' indicating if flight arrived late\n    - estimated_late (String): '1' or '0' indicating if flight was estimated to be late\n\n    The user is asking about airport: SIN\n    Question: How many flights arrived from Germany?\n\n    Generate a SQL query to answer this question. The query should:\n    1. Always include WHERE destination_airport = 'SIN'\n    2. Be specific to the question asked\n    3. Use appropriate aggregations (COUNT, AVG, SUM) when needed\n    4. Use proper grouping when aggregating\n    5. Include CASE statements for Yes/No counting if needed\n    6. Be a valid SQLite query\n    7. Use proper string comparisons for 'Yes'/'No' fields\n    \n    Return only the SQL query without any explanation or comments.\n    "}], 'model': 'gpt-4', 'max_tokens': 500, 'temperature': 0.1}}
+2025-01-09 14:50:59,140 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-01-09 14:50:59,141 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-01-09 14:50:59,201 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000199EF9561C0>
+2025-01-09 14:50:59,201 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x00000199EF6B54C0> server_hostname='api.openai.com' timeout=5.0
+2025-01-09 14:50:59,222 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000199EF956250>
+2025-01-09 14:50:59,223 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-09 14:50:59,223 - DEBUG - send_request_headers.complete
+2025-01-09 14:50:59,223 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-09 14:50:59,223 - DEBUG - send_request_body.complete
+2025-01-09 14:50:59,223 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-09 14:50:59,488 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Thu, 09 Jan 2025 09:20:59 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'301'), (b'Connection', b'keep-alive'), (b'vary', b'Origin'), (b'x-request-id', b'req_405467dfe7c1c5751ca95d499191ee34'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=DnFlHBXvCQtIFFF6md4jrMvSqeJx9idiNQjwm810tpk-1736414459-1.0.1.1-e6h2KuWZ.UX0CzWSByBMjeCTXc8Gr8fOs3HdrM8xaa1Gd.LZbXGwaaiHHev7Pm9WkYR2NCgJajGBnVvs3Wv84Q; path=/; expires=Thu, 09-Jan-25 09:50:59 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=0vM3tcXvwvF9zXDTluW6QtLtv6wYGXFwH.a4_zunZF4-1736414459490-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ff35ac24f3b4419-BOM'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-09 14:51:00,236 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-01-09 14:51:00,236 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-09 14:51:00,237 - DEBUG - receive_response_body.complete
+2025-01-09 14:51:00,237 - DEBUG - response_closed.started
+2025-01-09 14:51:00,237 - DEBUG - response_closed.complete
+2025-01-09 14:51:00,237 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "401 Unauthorized" Headers([('date', 'Thu, 09 Jan 2025 09:20:59 GMT'), ('content-type', 'application/json; charset=utf-8'), ('content-length', '301'), ('connection', 'keep-alive'), ('vary', 'Origin'), ('x-request-id', 'req_405467dfe7c1c5751ca95d499191ee34'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=DnFlHBXvCQtIFFF6md4jrMvSqeJx9idiNQjwm810tpk-1736414459-1.0.1.1-e6h2KuWZ.UX0CzWSByBMjeCTXc8Gr8fOs3HdrM8xaa1Gd.LZbXGwaaiHHev7Pm9WkYR2NCgJajGBnVvs3Wv84Q; path=/; expires=Thu, 09-Jan-25 09:50:59 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=0vM3tcXvwvF9zXDTluW6QtLtv6wYGXFwH.a4_zunZF4-1736414459490-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8ff35ac24f3b4419-BOM'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-01-09 14:51:00,237 - DEBUG - request_id: req_405467dfe7c1c5751ca95d499191ee34
+2025-01-09 14:51:00,237 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "C:\Users\amayd\OneDrive\Desktop\project flights\venv\lib\site-packages\openai\_base_client.py", line 1043, in _request
+    response.raise_for_status()
+  File "C:\Users\amayd\OneDrive\Desktop\project flights\venv\lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-01-09 14:51:00,238 - DEBUG - Not retrying
+2025-01-09 14:51:00,238 - DEBUG - Re-raising status error
+2025-01-09 14:51:00,239 - ERROR - Error generating SQL query: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-9sFGj***************************************ov7G. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-01-09 14:51:00,240 - INFO - 127.0.0.1 - - [09/Jan/2025 14:51:00] "POST / HTTP/1.1" 200 -
+2025-01-09 14:52:42,410 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.74:5000
+2025-01-09 14:52:42,411 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-09 14:52:42,413 - INFO -  * Restarting with stat
+2025-01-09 14:52:43,976 - WARNING -  * Debugger is active!
+2025-01-09 14:52:43,992 - INFO -  * Debugger PIN: 502-076-962
+2025-01-09 14:52:47,123 - INFO - 127.0.0.1 - - [09/Jan/2025 14:52:47] "GET / HTTP/1.1" 200 -
+2025-01-09 14:52:52,525 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a SQL query generator. Return only the SQL query without any explanation, comments, or markdown formatting.'}, {'role': 'user', 'content': "\n    Given the following SQLite database table structure:\n    Table name: flights\n    Database: flights.db\n    Columns:\n    - destination_airport (String): Airport code for destination\n    - src_airline_code (String): Airline code\n    - src_country (String): Full country name of origin\n    - src_city (String): City of origin\n    - src_identification_codeshare (String): Codeshare identification\n    - flight_number (String): Flight number\n    - arrived_late (String): '1' or '0' indicating if flight arrived late\n    - estimated_late (String): '1' or '0' indicating if flight was estimated to be late\n\n    The user is asking about airport: SIN\n    Question: How many flights arrived from Germany?\n\n    Generate a SQL query to answer this question. The query should:\n    1. Always include WHERE destination_airport = 'SIN'\n    2. Be specific to the question asked\n    3. Use appropriate aggregations (COUNT, AVG, SUM) when needed\n    4. Use proper grouping when aggregating\n    5. Include CASE statements for Yes/No counting if needed\n    6. Be a valid SQLite query\n    7. Use proper string comparisons for 'Yes'/'No' fields\n    \n    Return only the SQL query without any explanation or comments.\n    "}], 'model': 'gpt-4o', 'max_tokens': 500, 'temperature': 0.1}}
+2025-01-09 14:52:52,612 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-01-09 14:52:52,612 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-01-09 14:52:52,680 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001DE9DFC61C0>
+2025-01-09 14:52:52,680 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001DE9DD254C0> server_hostname='api.openai.com' timeout=5.0
+2025-01-09 14:52:52,701 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001DE9DFC6250>
+2025-01-09 14:52:52,701 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-09 14:52:52,702 - DEBUG - send_request_headers.complete
+2025-01-09 14:52:52,702 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-09 14:52:52,702 - DEBUG - send_request_body.complete
+2025-01-09 14:52:52,702 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-09 14:52:52,974 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Thu, 09 Jan 2025 09:22:52 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'301'), (b'Connection', b'keep-alive'), (b'vary', b'Origin'), (b'x-request-id', b'req_48767f26750fc78221b74db6f75ea558'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=vI8B3yoQPmeYGyDwLP.eEZ4xj_V.ETNQEZWqpNgaHiQ-1736414572-1.0.1.1-YQtUbemQXfkdxgfqK2zB.zlLXZ90Bd1X7XkIB_MWL98Cme9XCRgFiPRVcjPQ3nd1b0i1KF7S9kT1cgDvvaHOUw; path=/; expires=Thu, 09-Jan-25 09:52:52 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=EDd9XJ4.5.1qCw8fYNHwvdNzNnyf3kxhXz1JJwgaTew-1736414572975-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ff35d877b0f3a5b-BOM'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-09 14:52:52,975 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-01-09 14:52:52,975 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-09 14:52:52,975 - DEBUG - receive_response_body.complete
+2025-01-09 14:52:52,975 - DEBUG - response_closed.started
+2025-01-09 14:52:52,975 - DEBUG - response_closed.complete
+2025-01-09 14:52:52,975 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "401 Unauthorized" Headers([('date', 'Thu, 09 Jan 2025 09:22:52 GMT'), ('content-type', 'application/json; charset=utf-8'), ('content-length', '301'), ('connection', 'keep-alive'), ('vary', 'Origin'), ('x-request-id', 'req_48767f26750fc78221b74db6f75ea558'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=vI8B3yoQPmeYGyDwLP.eEZ4xj_V.ETNQEZWqpNgaHiQ-1736414572-1.0.1.1-YQtUbemQXfkdxgfqK2zB.zlLXZ90Bd1X7XkIB_MWL98Cme9XCRgFiPRVcjPQ3nd1b0i1KF7S9kT1cgDvvaHOUw; path=/; expires=Thu, 09-Jan-25 09:52:52 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=EDd9XJ4.5.1qCw8fYNHwvdNzNnyf3kxhXz1JJwgaTew-1736414572975-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8ff35d877b0f3a5b-BOM'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-01-09 14:52:52,976 - DEBUG - request_id: req_48767f26750fc78221b74db6f75ea558
+2025-01-09 14:52:52,976 - DEBUG - Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "C:\Users\amayd\OneDrive\Desktop\project flights\venv\lib\site-packages\openai\_base_client.py", line 1043, in _request
+    response.raise_for_status()
+  File "C:\Users\amayd\OneDrive\Desktop\project flights\venv\lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-01-09 14:52:52,977 - DEBUG - Not retrying
+2025-01-09 14:52:52,977 - DEBUG - Re-raising status error
+2025-01-09 14:52:52,978 - ERROR - Error generating SQL query: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-9sFGj***************************************ov7G. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-01-09 14:52:52,978 - INFO - 127.0.0.1 - - [09/Jan/2025 14:52:52] "POST / HTTP/1.1" 200 -
+2025-01-09 14:56:49,358 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.74:5000
+2025-01-09 14:56:49,358 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-09 14:56:49,405 - INFO -  * Restarting with stat
+2025-01-09 14:56:50,798 - WARNING -  * Debugger is active!
+2025-01-09 14:56:50,813 - INFO -  * Debugger PIN: 502-076-962
+2025-01-09 14:56:50,913 - INFO - 127.0.0.1 - - [09/Jan/2025 14:56:50] "GET / HTTP/1.1" 200 -
+2025-01-09 14:56:55,136 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a SQL query generator. Return only the SQL query without any explanation, comments, or markdown formatting.'}, {'role': 'user', 'content': "\n    Given the following SQLite database table structure:\n    Table name: flights\n    Database: flights.db\n    Columns:\n    - destination_airport (String): Airport code for destination\n    - src_airline_code (String): Airline code\n    - src_country (String): Full country name of origin\n    - src_city (String): City of origin\n    - src_identification_codeshare (String): Codeshare identification\n    - flight_number (String): Flight number\n    - arrived_late (String): '1' or '0' indicating if flight arrived late\n    - estimated_late (String): '1' or '0' indicating if flight was estimated to be late\n\n    The user is asking about airport: SIN\n    Question: How many flights arrived from Germany?\n\n    Generate a SQL query to answer this question. The query should:\n    1. Always include WHERE destination_airport = 'SIN'\n    2. Be specific to the question asked\n    3. Use appropriate aggregations (COUNT, AVG, SUM) when needed\n    4. Use proper grouping when aggregating\n    5. Include CASE statements for Yes/No counting if needed\n    6. Be a valid SQLite query\n    7. Use proper string comparisons for 'Yes'/'No' fields\n    \n    Return only the SQL query without any explanation or comments.\n    "}], 'model': 'gpt-4o', 'max_tokens': 500, 'temperature': 0.1}}
+2025-01-09 14:56:55,151 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-01-09 14:56:55,151 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-01-09 14:56:55,197 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002298E8C61C0>
+2025-01-09 14:56:55,197 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000002298E6254C0> server_hostname='api.openai.com' timeout=5.0
+2025-01-09 14:56:55,218 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002298E8C6250>
+2025-01-09 14:56:55,218 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-09 14:56:55,219 - DEBUG - send_request_headers.complete
+2025-01-09 14:56:55,219 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-09 14:56:55,219 - DEBUG - send_request_body.complete
+2025-01-09 14:56:55,219 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-09 14:56:56,547 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 09 Jan 2025 09:26:56 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'openigloo-z3qk2v'), (b'openai-processing-ms', b'615'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'500'), (b'x-ratelimit-limit-tokens', b'30000'), (b'x-ratelimit-remaining-requests', b'499'), (b'x-ratelimit-remaining-tokens', b'29168'), (b'x-ratelimit-reset-requests', b'120ms'), (b'x-ratelimit-reset-tokens', b'1.664s'), (b'x-request-id', b'req_16f2fe97617ee84c483dc436bb3daaae'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=aiHVN.BoFafDPO_.TefmpWzv9GAAiqnPHJqAempbLbg-1736414816-1.0.1.1-EtGx5mfXaRJ4M4URhe7OmxEJhCYhMdwasTInqhQ.JevL2hR2Jf209I7fzrewruPugnKvnQolvIiS30a.SmCIOw; path=/; expires=Thu, 09-Jan-25 09:56:56 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=dywQbyafihtp.XOkKS2im_tvymGEBd9Gd2ZcOAWuz.Y-1736414816548-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ff363733ef53a14-BOM'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-09 14:56:56,548 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 14:56:56,548 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-09 14:56:56,549 - DEBUG - receive_response_body.complete
+2025-01-09 14:56:56,549 - DEBUG - response_closed.started
+2025-01-09 14:56:56,549 - DEBUG - response_closed.complete
+2025-01-09 14:56:56,549 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Thu, 09 Jan 2025 09:26:56 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'openigloo-z3qk2v'), ('openai-processing-ms', '615'), ('openai-version', '2020-10-01'), ('x-ratelimit-limit-requests', '500'), ('x-ratelimit-limit-tokens', '30000'), ('x-ratelimit-remaining-requests', '499'), ('x-ratelimit-remaining-tokens', '29168'), ('x-ratelimit-reset-requests', '120ms'), ('x-ratelimit-reset-tokens', '1.664s'), ('x-request-id', 'req_16f2fe97617ee84c483dc436bb3daaae'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=aiHVN.BoFafDPO_.TefmpWzv9GAAiqnPHJqAempbLbg-1736414816-1.0.1.1-EtGx5mfXaRJ4M4URhe7OmxEJhCYhMdwasTInqhQ.JevL2hR2Jf209I7fzrewruPugnKvnQolvIiS30a.SmCIOw; path=/; expires=Thu, 09-Jan-25 09:56:56 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=dywQbyafihtp.XOkKS2im_tvymGEBd9Gd2ZcOAWuz.Y-1736414816548-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8ff363733ef53a14-BOM'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-01-09 14:56:56,549 - DEBUG - request_id: req_16f2fe97617ee84c483dc436bb3daaae
+2025-01-09 14:56:56,558 - ERROR - Error executing SQL query: (sqlite3.OperationalError) near "```sql
+SELECT COUNT(*) AS number_of_flights
+FROM flights
+WHERE destination_airport = 'SIN' AND src_country = 'Germany';
+```": syntax error
+[SQL: ```sql
+SELECT COUNT(*) AS number_of_flights
+FROM flights
+WHERE destination_airport = 'SIN' AND src_country = 'Germany';
+```]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-01-09 14:56:56,559 - INFO - 127.0.0.1 - - [09/Jan/2025 14:56:56] "POST / HTTP/1.1" 200 -
+2025-01-09 14:58:50,595 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a SQL query generator. Return only the SQL query without any explanation, comments, or markdown formatting.'}, {'role': 'user', 'content': "\n    Given the following SQLite database table structure:\n    Table name: flights\n    Database: flights.db\n    Columns:\n    - destination_airport (String): Airport code for destination\n    - src_airline_code (String): Airline code\n    - src_country (String): Full country name of origin\n    - src_city (String): City of origin\n    - src_identification_codeshare (String): Codeshare identification\n    - flight_number (String): Flight number\n    - arrived_late (String): '1' or '0' indicating if flight arrived late\n    - estimated_late (String): '1' or '0' indicating if flight was estimated to be late\n\n    The user is asking about airport: DXB\n    Question: How many flights arrived from Germany?\n\n    Generate a SQL query to answer this question. The query should:\n    1. Always include WHERE destination_airport = 'DXB'\n    2. Be specific to the question asked\n    3. Use appropriate aggregations (COUNT, AVG, SUM) when needed\n    4. Use proper grouping when aggregating\n    5. Include CASE statements for Yes/No counting if needed\n    6. Be a valid SQLite query\n    7. Use proper string comparisons for 'Yes'/'No' fields\n    \n    Return only the SQL query without any explanation or comments.\n    "}], 'model': 'gpt-4o', 'max_tokens': 500, 'temperature': 0.1}}
+2025-01-09 14:58:50,596 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-01-09 14:58:50,597 - DEBUG - close.started
+2025-01-09 14:58:51,578 - DEBUG - close.complete
+2025-01-09 14:58:51,578 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-01-09 14:58:51,614 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002298E8D69A0>
+2025-01-09 14:58:51,614 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000002298E6254C0> server_hostname='api.openai.com' timeout=5.0
+2025-01-09 14:58:51,635 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002298E8D6C10>
+2025-01-09 14:58:51,636 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-09 14:58:51,636 - DEBUG - send_request_headers.complete
+2025-01-09 14:58:51,637 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-09 14:58:51,637 - DEBUG - send_request_body.complete
+2025-01-09 14:58:51,637 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-09 14:58:52,823 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 09 Jan 2025 09:28:52 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'openigloo-z3qk2v'), (b'openai-processing-ms', b'932'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'500'), (b'x-ratelimit-limit-tokens', b'30000'), (b'x-ratelimit-remaining-requests', b'499'), (b'x-ratelimit-remaining-tokens', b'29168'), (b'x-ratelimit-reset-requests', b'120ms'), (b'x-ratelimit-reset-tokens', b'1.664s'), (b'x-request-id', b'req_9b2a13c1e1b00178faeb7044ee94cb87'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ff3664ad961f4df-BOM'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-09 14:58:52,858 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 14:58:52,858 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-09 14:58:52,858 - DEBUG - receive_response_body.complete
+2025-01-09 14:58:52,859 - DEBUG - response_closed.started
+2025-01-09 14:58:52,859 - DEBUG - response_closed.complete
+2025-01-09 14:58:52,859 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers({'date': 'Thu, 09 Jan 2025 09:28:52 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-expose-headers': 'X-Request-ID', 'openai-organization': 'openigloo-z3qk2v', 'openai-processing-ms': '932', 'openai-version': '2020-10-01', 'x-ratelimit-limit-requests': '500', 'x-ratelimit-limit-tokens': '30000', 'x-ratelimit-remaining-requests': '499', 'x-ratelimit-remaining-tokens': '29168', 'x-ratelimit-reset-requests': '120ms', 'x-ratelimit-reset-tokens': '1.664s', 'x-request-id': 'req_9b2a13c1e1b00178faeb7044ee94cb87', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8ff3664ad961f4df-BOM', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-01-09 14:58:52,859 - DEBUG - request_id: req_9b2a13c1e1b00178faeb7044ee94cb87
+2025-01-09 14:58:52,860 - ERROR - Error executing SQL query: (sqlite3.OperationalError) near "```sql
+SELECT COUNT(*) AS flights_from_germany
+FROM flights
+WHERE destination_airport = 'DXB' AND src_country = 'Germany';
+```": syntax error
+[SQL: ```sql
+SELECT COUNT(*) AS flights_from_germany
+FROM flights
+WHERE destination_airport = 'DXB' AND src_country = 'Germany';
+```]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-01-09 14:58:52,861 - INFO - 127.0.0.1 - - [09/Jan/2025 14:58:52] "POST / HTTP/1.1" 200 -
+2025-01-09 14:59:37,651 - INFO -  * Detected change in 'C:\\Users\\amayd\\OneDrive\\Desktop\\project flights\\app.py', reloading
+2025-01-09 14:59:38,049 - INFO -  * Restarting with stat
+2025-01-09 14:59:39,689 - WARNING -  * Debugger is active!
+2025-01-09 14:59:39,706 - INFO -  * Debugger PIN: 502-076-962
+2025-01-09 14:59:44,893 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.74:5000
+2025-01-09 14:59:44,893 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-09 14:59:44,893 - INFO -  * Restarting with stat
+2025-01-09 14:59:46,447 - WARNING -  * Debugger is active!
+2025-01-09 14:59:46,462 - INFO -  * Debugger PIN: 502-076-962
+2025-01-09 14:59:48,798 - INFO - 127.0.0.1 - - [09/Jan/2025 14:59:48] "GET / HTTP/1.1" 200 -
+2025-01-09 14:59:55,662 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a SQL query generator. Return only the SQL query without any explanation, comments, or markdown formatting.'}, {'role': 'user', 'content': "\n    Given the following SQLite database table structure:\n    Table name: flights\n    Database: flights.db\n    Columns:\n    - destination_airport (String): Airport code for destination\n    - src_airline_code (String): Airline code\n    - src_country (String): Full country name of origin\n    - src_city (String): City of origin\n    - src_identification_codeshare (String): Codeshare identification\n    - flight_number (String): Flight number\n    - arrived_late (String): '1' or '0' indicating if flight arrived late\n    - estimated_late (String): '1' or '0' indicating if flight was estimated to be late\n\n    The user is asking about airport: SIN\n    Question: How many flights arrived from Germany?\n\n    Generate a SQL query to answer this question. The query should:\n    1. Always include WHERE destination_airport = 'SIN'\n    2. Be specific to the question asked\n    3. Use appropriate aggregations (COUNT, AVG, SUM) when needed\n    4. Use proper grouping when aggregating\n    5. Include CASE statements for Yes/No counting if needed\n    6. Be a valid SQLite query\n    7. Use proper string comparisons for 'Yes'/'No' fields\n    \n    Return only the SQL query without any explanation or comments.\n    "}], 'model': 'gpt-4o', 'max_tokens': 500, 'temperature': 0.1}}
+2025-01-09 14:59:55,692 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-01-09 14:59:55,692 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-01-09 14:59:55,756 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001C704176220>
+2025-01-09 14:59:55,756 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001C703ED54C0> server_hostname='api.openai.com' timeout=5.0
+2025-01-09 14:59:55,800 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001C7041762B0>
+2025-01-09 14:59:55,801 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-09 14:59:55,801 - DEBUG - send_request_headers.complete
+2025-01-09 14:59:55,801 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-09 14:59:55,801 - DEBUG - send_request_body.complete
+2025-01-09 14:59:55,801 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-09 14:59:57,212 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 09 Jan 2025 09:29:57 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'openigloo-z3qk2v'), (b'openai-processing-ms', b'1111'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'500'), (b'x-ratelimit-limit-tokens', b'30000'), (b'x-ratelimit-remaining-requests', b'499'), (b'x-ratelimit-remaining-tokens', b'29168'), (b'x-ratelimit-reset-requests', b'120ms'), (b'x-ratelimit-reset-tokens', b'1.664s'), (b'x-request-id', b'req_e6b26a61c7df2b9ea426ce2287ca0717'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=n9JGkf.QrpCQGh3XkkLktc4MW3xD2Ae4w9UX3d4sHjg-1736414997-1.0.1.1-kgOxHNU4NB0xXUec_xq6stzQOWsZDmXlEf0WToPGpNHUBu2KAQn3YyO0o7SH5aOrScQlvOaHZ4jEPhjSc5e1BA; path=/; expires=Thu, 09-Jan-25 09:59:57 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=nsrfB9a1YTRK1o15jZWHDRLcOY9P8sqdDGjLZr2XcZ0-1736414997214-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ff367dbeddd4075-BOM'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-09 14:59:57,213 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 14:59:57,215 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-09 14:59:57,217 - DEBUG - receive_response_body.complete
+2025-01-09 14:59:57,217 - DEBUG - response_closed.started
+2025-01-09 14:59:57,217 - DEBUG - response_closed.complete
+2025-01-09 14:59:57,217 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Thu, 09 Jan 2025 09:29:57 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'openigloo-z3qk2v'), ('openai-processing-ms', '1111'), ('openai-version', '2020-10-01'), ('x-ratelimit-limit-requests', '500'), ('x-ratelimit-limit-tokens', '30000'), ('x-ratelimit-remaining-requests', '499'), ('x-ratelimit-remaining-tokens', '29168'), ('x-ratelimit-reset-requests', '120ms'), ('x-ratelimit-reset-tokens', '1.664s'), ('x-request-id', 'req_e6b26a61c7df2b9ea426ce2287ca0717'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=n9JGkf.QrpCQGh3XkkLktc4MW3xD2Ae4w9UX3d4sHjg-1736414997-1.0.1.1-kgOxHNU4NB0xXUec_xq6stzQOWsZDmXlEf0WToPGpNHUBu2KAQn3YyO0o7SH5aOrScQlvOaHZ4jEPhjSc5e1BA; path=/; expires=Thu, 09-Jan-25 09:59:57 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=nsrfB9a1YTRK1o15jZWHDRLcOY9P8sqdDGjLZr2XcZ0-1736414997214-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8ff367dbeddd4075-BOM'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-01-09 14:59:57,217 - DEBUG - request_id: req_e6b26a61c7df2b9ea426ce2287ca0717
+2025-01-09 14:59:57,259 - ERROR - Error executing SQL query: (sqlite3.OperationalError) near "```sql
+SELECT COUNT(*) AS number_of_flights
+FROM flights
+WHERE destination_airport = 'SIN' AND src_country = 'Germany';
+```": syntax error
+[SQL: ```sql
+SELECT COUNT(*) AS number_of_flights
+FROM flights
+WHERE destination_airport = 'SIN' AND src_country = 'Germany';
+```]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-01-09 14:59:57,259 - INFO - 127.0.0.1 - - [09/Jan/2025 14:59:57] "POST / HTTP/1.1" 200 -
+2025-01-09 15:01:53,852 - INFO -  * Detected change in 'C:\\Users\\amayd\\OneDrive\\Desktop\\project flights\\app.py', reloading
+2025-01-09 15:01:58,166 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.74:5000
+2025-01-09 15:01:58,166 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-09 15:01:58,168 - INFO -  * Restarting with stat
+2025-01-09 15:01:59,609 - WARNING -  * Debugger is active!
+2025-01-09 15:01:59,627 - INFO -  * Debugger PIN: 502-076-962
+2025-01-09 15:02:01,572 - INFO - 127.0.0.1 - - [09/Jan/2025 15:02:01] "GET / HTTP/1.1" 200 -
+2025-01-09 15:02:05,511 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a SQL query generator. Return only the SQL query without any explanation, comments, or markdown formatting.'}, {'role': 'user', 'content': "\n    Given the following SQLite database table structure:\n    Table name: flights\n    Database: flights.db\n    Columns:\n    - destination_airport (String): Airport code for destination\n    - src_airline_code (String): Airline code\n    - src_country (String): Full country name of origin\n    - src_city (String): City of origin\n    - src_identification_codeshare (String): Codeshare identification\n    - flight_number (String): Flight number\n    - arrived_late (String): '1' or '0' indicating if flight arrived late\n    - estimated_late (String): '1' or '0' indicating if flight was estimated to be late\n\n    The user is asking about airport: SIN\n    Question: How many flights arrived from Germany?\n\n    Generate a SQL query to answer this question. The query should:\n    1. Always include WHERE destination_airport = 'SIN'\n    2. Be specific to the question asked\n    3. Use appropriate aggregations (COUNT, AVG, SUM) when needed\n    4. Use proper grouping when aggregating\n    5. Include CASE statements for Yes/No counting if needed\n    6. Be a valid SQLite query\n    7. Use proper string comparisons for 'Yes'/'No' fields\n    \n    Return only the SQL query without any explanation or comments.\n    "}], 'model': 'gpt-4o', 'max_tokens': 500, 'temperature': 0.1}}
+2025-01-09 15:02:05,521 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-01-09 15:02:05,521 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-01-09 15:02:05,575 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x00000144259742E0>
+2025-01-09 15:02:05,575 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x00000144256D0540> server_hostname='api.openai.com' timeout=5.0
+2025-01-09 15:02:05,595 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000014425974370>
+2025-01-09 15:02:05,596 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-09 15:02:05,596 - DEBUG - send_request_headers.complete
+2025-01-09 15:02:05,596 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-09 15:02:05,596 - DEBUG - send_request_body.complete
+2025-01-09 15:02:05,596 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-09 15:02:07,425 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 09 Jan 2025 09:32:07 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'openigloo-z3qk2v'), (b'openai-processing-ms', b'1517'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'500'), (b'x-ratelimit-limit-tokens', b'30000'), (b'x-ratelimit-remaining-requests', b'499'), (b'x-ratelimit-remaining-tokens', b'29168'), (b'x-ratelimit-reset-requests', b'120ms'), (b'x-ratelimit-reset-tokens', b'1.664s'), (b'x-request-id', b'req_8eda74b81ae3909f2271eff6493eeda2'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=47tGlhoyT4fa7X66nAacxiMi_.OxL6b3LqI8QZI81mg-1736415127-1.0.1.1-OVT3gD4yXltI9kkapTvxLWGZjxyVlJL54y5zhhOs4YeEfrB7hSrCRB2SU1sMSR9ES9l.kF6D0KU_wY_cS0VFtA; path=/; expires=Thu, 09-Jan-25 10:02:07 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=ShNcWHOr9kPwlmZF.Oh4NHtvqlkM6g44Lk0kdMYfR0U-1736415127427-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ff36b071c374025-BOM'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-09 15:02:07,426 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 15:02:07,426 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-09 15:02:07,428 - DEBUG - receive_response_body.complete
+2025-01-09 15:02:07,428 - DEBUG - response_closed.started
+2025-01-09 15:02:07,428 - DEBUG - response_closed.complete
+2025-01-09 15:02:07,428 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Thu, 09 Jan 2025 09:32:07 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'openigloo-z3qk2v'), ('openai-processing-ms', '1517'), ('openai-version', '2020-10-01'), ('x-ratelimit-limit-requests', '500'), ('x-ratelimit-limit-tokens', '30000'), ('x-ratelimit-remaining-requests', '499'), ('x-ratelimit-remaining-tokens', '29168'), ('x-ratelimit-reset-requests', '120ms'), ('x-ratelimit-reset-tokens', '1.664s'), ('x-request-id', 'req_8eda74b81ae3909f2271eff6493eeda2'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=47tGlhoyT4fa7X66nAacxiMi_.OxL6b3LqI8QZI81mg-1736415127-1.0.1.1-OVT3gD4yXltI9kkapTvxLWGZjxyVlJL54y5zhhOs4YeEfrB7hSrCRB2SU1sMSR9ES9l.kF6D0KU_wY_cS0VFtA; path=/; expires=Thu, 09-Jan-25 10:02:07 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=ShNcWHOr9kPwlmZF.Oh4NHtvqlkM6g44Lk0kdMYfR0U-1736415127427-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8ff36b071c374025-BOM'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-01-09 15:02:07,428 - DEBUG - request_id: req_8eda74b81ae3909f2271eff6493eeda2
+2025-01-09 15:02:07,433 - ERROR - Error executing SQL query: (sqlite3.OperationalError) near "```sql
+SELECT COUNT(*) AS flights_from_germany
+FROM flights
+WHERE destination_airport = 'SIN' AND src_country = 'Germany';
+```": syntax error
+[SQL: ```sql
+SELECT COUNT(*) AS flights_from_germany
+FROM flights
+WHERE destination_airport = 'SIN' AND src_country = 'Germany';
+```]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-01-09 15:02:07,441 - INFO - 127.0.0.1 - - [09/Jan/2025 15:02:07] "POST / HTTP/1.1" 200 -
+2025-01-09 15:03:30,528 - INFO -  * Detected change in 'C:\\Users\\amayd\\OneDrive\\Desktop\\project flights\\app.py', reloading
+2025-01-09 15:03:30,686 - INFO -  * Restarting with stat
+2025-01-09 15:03:32,147 - WARNING -  * Debugger is active!
+2025-01-09 15:03:32,162 - INFO -  * Debugger PIN: 502-076-962
+2025-01-09 15:03:36,771 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.74:5000
+2025-01-09 15:03:36,771 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-09 15:03:36,772 - INFO -  * Restarting with stat
+2025-01-09 15:03:38,148 - WARNING -  * Debugger is active!
+2025-01-09 15:03:38,164 - INFO -  * Debugger PIN: 502-076-962
+2025-01-09 15:03:39,014 - INFO - 127.0.0.1 - - [09/Jan/2025 15:03:39] "GET / HTTP/1.1" 200 -
+2025-01-09 15:03:45,322 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a SQL query generator. Return only the SQL query without any explanation, comments, or markdown formatting.'}, {'role': 'user', 'content': "\n    Given the following SQLite database table structure:\n    Table name: flights\n    Database: flights.db\n    Columns:\n    - destination_airport (String): Airport code for destination\n    - src_airline_code (String): Airline code\n    - src_country (String): Full country name of origin\n    - src_city (String): City of origin\n    - src_identification_codeshare (String): Codeshare identification\n    - flight_number (String): Flight number\n    - arrived_late (String): '1' or '0' indicating if flight arrived late\n    - estimated_late (String): '1' or '0' indicating if flight was estimated to be late\n\n    The user is asking about airport: SIN\n    Question: How many flights arrived from Germany?\n\n    Generate a SQL query to answer this question. The query should:\n    1. Always include WHERE destination_airport = 'SIN'\n    2. Be specific to the question asked\n    3. Use appropriate aggregations (COUNT, AVG, SUM) when needed\n    4. Use proper grouping when aggregating\n    5. Include CASE statements for Yes/No counting if needed\n    6. Be a valid SQLite query\n    7. Use proper string comparisons for 'Yes'/'No' fields\n    \n    Return only the SQL query without any explanation or comments.\n    "}], 'model': 'gpt-4o', 'max_tokens': 500, 'temperature': 0.1}}
+2025-01-09 15:03:45,380 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-01-09 15:03:45,381 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-01-09 15:03:45,419 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001AE08D004C0>
+2025-01-09 15:03:45,420 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001AE08A605C0> server_hostname='api.openai.com' timeout=5.0
+2025-01-09 15:03:45,438 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001AE08D00550>
+2025-01-09 15:03:45,439 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-09 15:03:45,439 - DEBUG - send_request_headers.complete
+2025-01-09 15:03:45,439 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-09 15:03:45,439 - DEBUG - send_request_body.complete
+2025-01-09 15:03:45,439 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-09 15:03:46,683 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 09 Jan 2025 09:33:46 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'openigloo-z3qk2v'), (b'openai-processing-ms', b'944'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'500'), (b'x-ratelimit-limit-tokens', b'30000'), (b'x-ratelimit-remaining-requests', b'499'), (b'x-ratelimit-remaining-tokens', b'29168'), (b'x-ratelimit-reset-requests', b'120ms'), (b'x-ratelimit-reset-tokens', b'1.664s'), (b'x-request-id', b'req_3776e9343df45ecb249ba86d52bc7ab7'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=R2R5i2oW58PICFKsoH12R5LFC8XR5j3xyVLUNkxO1C8-1736415226-1.0.1.1-FMaQK_PlZx.6UY4573eghe6RnuvGjBKNT7R9YSYRAoXtUwLBeCt0Md0QZPBMGoGL4FhDWyeb1CNUUVZCpmeeRw; path=/; expires=Thu, 09-Jan-25 10:03:46 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'_cfuvid=agWdD6N2ks4dunMFRtwbuaucBM5ZHieIJUiDLXN2OWc-1736415226683-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ff36d771c323a19-BOM'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-09 15:03:46,684 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 15:03:46,684 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-09 15:03:46,685 - DEBUG - receive_response_body.complete
+2025-01-09 15:03:46,685 - DEBUG - response_closed.started
+2025-01-09 15:03:46,685 - DEBUG - response_closed.complete
+2025-01-09 15:03:46,685 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers([('date', 'Thu, 09 Jan 2025 09:33:46 GMT'), ('content-type', 'application/json'), ('transfer-encoding', 'chunked'), ('connection', 'keep-alive'), ('access-control-expose-headers', 'X-Request-ID'), ('openai-organization', 'openigloo-z3qk2v'), ('openai-processing-ms', '944'), ('openai-version', '2020-10-01'), ('x-ratelimit-limit-requests', '500'), ('x-ratelimit-limit-tokens', '30000'), ('x-ratelimit-remaining-requests', '499'), ('x-ratelimit-remaining-tokens', '29168'), ('x-ratelimit-reset-requests', '120ms'), ('x-ratelimit-reset-tokens', '1.664s'), ('x-request-id', 'req_3776e9343df45ecb249ba86d52bc7ab7'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('cf-cache-status', 'DYNAMIC'), ('set-cookie', '__cf_bm=R2R5i2oW58PICFKsoH12R5LFC8XR5j3xyVLUNkxO1C8-1736415226-1.0.1.1-FMaQK_PlZx.6UY4573eghe6RnuvGjBKNT7R9YSYRAoXtUwLBeCt0Md0QZPBMGoGL4FhDWyeb1CNUUVZCpmeeRw; path=/; expires=Thu, 09-Jan-25 10:03:46 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('x-content-type-options', 'nosniff'), ('set-cookie', '_cfuvid=agWdD6N2ks4dunMFRtwbuaucBM5ZHieIJUiDLXN2OWc-1736415226683-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None'), ('server', 'cloudflare'), ('cf-ray', '8ff36d771c323a19-BOM'), ('content-encoding', 'gzip'), ('alt-svc', 'h3=":443"; ma=86400')])
+2025-01-09 15:03:46,685 - DEBUG - request_id: req_3776e9343df45ecb249ba86d52bc7ab7
+2025-01-09 15:03:46,704 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a data interpreter. Provide clear, concise answers based on SQL query results and beautify the results.Do not write things like according to SQL results. Answer in human like way.'}, {'role': 'user', 'content': "\n    Question: How many flights arrived from Germany?\n    SQL Results: [{'number_of_flights': 16}]\n    \n    Please provide a clear, natural language response based on these SQL query results.\n    Focus on directly answering the question while including specific numbers and facts from the data.\n    If the results are empty, indicate that no data was found.\n    "}], 'model': 'gpt-4o', 'temperature': 0.7}}
+2025-01-09 15:03:46,705 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-01-09 15:03:46,705 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-09 15:03:46,705 - DEBUG - send_request_headers.complete
+2025-01-09 15:03:46,706 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-09 15:03:46,706 - DEBUG - send_request_body.complete
+2025-01-09 15:03:46,706 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-09 15:03:47,437 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 09 Jan 2025 09:33:47 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'openigloo-z3qk2v'), (b'openai-processing-ms', b'438'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'500'), (b'x-ratelimit-limit-tokens', b'30000'), (b'x-ratelimit-remaining-requests', b'499'), (b'x-ratelimit-remaining-tokens', b'29844'), (b'x-ratelimit-reset-requests', b'120ms'), (b'x-ratelimit-reset-tokens', b'312ms'), (b'x-request-id', b'req_d129c9524686ee5eba5e0878d4ad0515'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ff36d7f0d103a19-BOM'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-09 15:03:47,437 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 15:03:47,438 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-09 15:03:47,441 - DEBUG - receive_response_body.complete
+2025-01-09 15:03:47,441 - DEBUG - response_closed.started
+2025-01-09 15:03:47,441 - DEBUG - response_closed.complete
+2025-01-09 15:03:47,441 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers({'date': 'Thu, 09 Jan 2025 09:33:47 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-expose-headers': 'X-Request-ID', 'openai-organization': 'openigloo-z3qk2v', 'openai-processing-ms': '438', 'openai-version': '2020-10-01', 'x-ratelimit-limit-requests': '500', 'x-ratelimit-limit-tokens': '30000', 'x-ratelimit-remaining-requests': '499', 'x-ratelimit-remaining-tokens': '29844', 'x-ratelimit-reset-requests': '120ms', 'x-ratelimit-reset-tokens': '312ms', 'x-request-id': 'req_d129c9524686ee5eba5e0878d4ad0515', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8ff36d7f0d103a19-BOM', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-01-09 15:03:47,441 - DEBUG - request_id: req_d129c9524686ee5eba5e0878d4ad0515
+2025-01-09 15:03:47,442 - INFO - 127.0.0.1 - - [09/Jan/2025 15:03:47] "POST / HTTP/1.1" 200 -
+2025-01-09 15:04:04,900 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a SQL query generator. Return only the SQL query without any explanation, comments, or markdown formatting.'}, {'role': 'user', 'content': "\n    Given the following SQLite database table structure:\n    Table name: flights\n    Database: flights.db\n    Columns:\n    - destination_airport (String): Airport code for destination\n    - src_airline_code (String): Airline code\n    - src_country (String): Full country name of origin\n    - src_city (String): City of origin\n    - src_identification_codeshare (String): Codeshare identification\n    - flight_number (String): Flight number\n    - arrived_late (String): '1' or '0' indicating if flight arrived late\n    - estimated_late (String): '1' or '0' indicating if flight was estimated to be late\n\n    The user is asking about airport: LHR\n    Question: Which cities in the United States does BA fly to?\n\n    Generate a SQL query to answer this question. The query should:\n    1. Always include WHERE destination_airport = 'LHR'\n    2. Be specific to the question asked\n    3. Use appropriate aggregations (COUNT, AVG, SUM) when needed\n    4. Use proper grouping when aggregating\n    5. Include CASE statements for Yes/No counting if needed\n    6. Be a valid SQLite query\n    7. Use proper string comparisons for 'Yes'/'No' fields\n    \n    Return only the SQL query without any explanation or comments.\n    "}], 'model': 'gpt-4o', 'max_tokens': 500, 'temperature': 0.1}}
+2025-01-09 15:04:04,901 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-01-09 15:04:04,901 - DEBUG - close.started
+2025-01-09 15:04:04,901 - DEBUG - close.complete
+2025-01-09 15:04:04,901 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=5.0 socket_options=None
+2025-01-09 15:04:04,956 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001AE08D674C0>
+2025-01-09 15:04:04,956 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001AE08A605C0> server_hostname='api.openai.com' timeout=5.0
+2025-01-09 15:04:04,977 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001AE08D67580>
+2025-01-09 15:04:04,977 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-09 15:04:04,977 - DEBUG - send_request_headers.complete
+2025-01-09 15:04:04,977 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-09 15:04:04,977 - DEBUG - send_request_body.complete
+2025-01-09 15:04:04,978 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-09 15:04:08,720 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 09 Jan 2025 09:34:08 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'openigloo-z3qk2v'), (b'openai-processing-ms', b'3434'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'500'), (b'x-ratelimit-limit-tokens', b'30000'), (b'x-ratelimit-remaining-requests', b'499'), (b'x-ratelimit-remaining-tokens', b'29166'), (b'x-ratelimit-reset-requests', b'120ms'), (b'x-ratelimit-reset-tokens', b'1.668s'), (b'x-request-id', b'req_b3ccba253c48d211814417d909f2aed7'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ff36df138661c00-BOM'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-09 15:04:08,720 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 15:04:08,720 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-09 15:04:08,726 - DEBUG - receive_response_body.complete
+2025-01-09 15:04:08,726 - DEBUG - response_closed.started
+2025-01-09 15:04:08,726 - DEBUG - response_closed.complete
+2025-01-09 15:04:08,726 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers({'date': 'Thu, 09 Jan 2025 09:34:08 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-expose-headers': 'X-Request-ID', 'openai-organization': 'openigloo-z3qk2v', 'openai-processing-ms': '3434', 'openai-version': '2020-10-01', 'x-ratelimit-limit-requests': '500', 'x-ratelimit-limit-tokens': '30000', 'x-ratelimit-remaining-requests': '499', 'x-ratelimit-remaining-tokens': '29166', 'x-ratelimit-reset-requests': '120ms', 'x-ratelimit-reset-tokens': '1.668s', 'x-request-id': 'req_b3ccba253c48d211814417d909f2aed7', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8ff36df138661c00-BOM', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-01-09 15:04:08,726 - DEBUG - request_id: req_b3ccba253c48d211814417d909f2aed7
+2025-01-09 15:04:08,838 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are a data interpreter. Provide clear, concise answers based on SQL query results and beautify the results.Do not write things like according to SQL results. Answer in human like way.'}, {'role': 'user', 'content': "\n    Question: Which cities in the US does BA fly to?\n    SQL Results: [{'src_city': 'Atlanta'}, {'src_city': 'Austin'}, {'src_city': 'Baltimore'}, {'src_city': 'Boston'}, {'src_city': 'Chicago'}, {'src_city': 'Cincinnati'}, {'src_city': 'Dallas'}, {'src_city': 'Denver'}, {'src_city': 'Houston'}, {'src_city': 'Las Vegas'}, {'src_city': 'Los Angeles'}, {'src_city': 'Miami'}, {'src_city': 'Nashville'}, {'src_city': 'New Orleans'}, {'src_city': 'New York'}, {'src_city': 'Philadelphia'}, {'src_city': 'Phoenix'}, {'src_city': 'Pittsburgh'}, {'src_city': 'Portland'}, {'src_city': 'San Diego'}, {'src_city': 'San Francisco'}, {'src_city': 'Seattle'}, {'src_city': 'Washington'}]\n    \n    Please provide a clear, natural language response based on these SQL query results.\n    Focus on directly answering the question while including specific numbers and facts from the data.\n    If the results are empty, indicate that no data was found.\n    "}], 'model': 'gpt-4o', 'temperature': 0.7}}
+2025-01-09 15:04:08,838 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-01-09 15:04:08,839 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-01-09 15:04:08,839 - DEBUG - send_request_headers.complete
+2025-01-09 15:04:08,839 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-01-09 15:04:08,839 - DEBUG - send_request_body.complete
+2025-01-09 15:04:08,839 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-01-09 15:04:11,467 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Thu, 09 Jan 2025 09:34:11 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'access-control-expose-headers', b'X-Request-ID'), (b'openai-organization', b'openigloo-z3qk2v'), (b'openai-processing-ms', b'2333'), (b'openai-version', b'2020-10-01'), (b'x-ratelimit-limit-requests', b'500'), (b'x-ratelimit-limit-tokens', b'30000'), (b'x-ratelimit-remaining-requests', b'499'), (b'x-ratelimit-remaining-tokens', b'29699'), (b'x-ratelimit-reset-requests', b'120ms'), (b'x-ratelimit-reset-tokens', b'602ms'), (b'x-request-id', b'req_0ccf6ea9721c73be2900a13e6072cd81'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'CF-Cache-Status', b'DYNAMIC'), (b'X-Content-Type-Options', b'nosniff'), (b'Server', b'cloudflare'), (b'CF-RAY', b'8ff36e096f7b1c00-BOM'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-01-09 15:04:11,467 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 15:04:11,467 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-01-09 15:04:11,468 - DEBUG - receive_response_body.complete
+2025-01-09 15:04:11,468 - DEBUG - response_closed.started
+2025-01-09 15:04:11,468 - DEBUG - response_closed.complete
+2025-01-09 15:04:11,468 - DEBUG - HTTP Response: POST https://api.openai.com/v1/chat/completions "200 OK" Headers({'date': 'Thu, 09 Jan 2025 09:34:11 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-expose-headers': 'X-Request-ID', 'openai-organization': 'openigloo-z3qk2v', 'openai-processing-ms': '2333', 'openai-version': '2020-10-01', 'x-ratelimit-limit-requests': '500', 'x-ratelimit-limit-tokens': '30000', 'x-ratelimit-remaining-requests': '499', 'x-ratelimit-remaining-tokens': '29699', 'x-ratelimit-reset-requests': '120ms', 'x-ratelimit-reset-tokens': '602ms', 'x-request-id': 'req_0ccf6ea9721c73be2900a13e6072cd81', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'server': 'cloudflare', 'cf-ray': '8ff36e096f7b1c00-BOM', 'content-encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'})
+2025-01-09 15:04:11,468 - DEBUG - request_id: req_0ccf6ea9721c73be2900a13e6072cd81
+2025-01-09 15:04:11,469 - INFO - 127.0.0.1 - - [09/Jan/2025 15:04:11] "POST / HTTP/1.1" 200 -
