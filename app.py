@@ -4,10 +4,6 @@ import logging
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 from db import Flight, Base
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -21,7 +17,8 @@ engine = create_engine("sqlite:///flights.db")
 Session = sessionmaker(bind=engine)
 
 # Initialize OpenAI API Key
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+# client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+client = OpenAI(api_key = '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')
 
 
 def get_unique_airports():
@@ -88,15 +85,17 @@ def generate_sql_query(question, airport_code):
 
     try:
         completion = client.chat.completions.create(
-            model="gpt-4",
-            messages=[
-                {"role": "system", "content": "You are a SQL query generator. Return only the SQL query without any explanation, comments, or markdown formatting."},
-                {"role": "user", "content": prompt}
-            ],
+            model="gpt-4o",
+            messages=[{"role": "system", "content": "You are a SQL query generator. Return only the SQL query without any explanation, comments, or markdown formatting."},
+                      {"role": "user", "content": prompt}],
             temperature=0.1,
             max_tokens=500
         )
-        return completion.choices[0].message.content.strip()
+        query = completion.choices[0].message.content.strip()
+        
+        # Ensure that no unwanted characters are in the query
+        query = query.replace("```sql", "").replace("```", "")
+        return query
     except Exception as e:
         logging.error(f"Error generating SQL query: {str(e)}")
         return None
@@ -107,15 +106,18 @@ def execute_sql_query(sql_query):
     """
     session = Session()
     try:
-        result = session.execute(text(sql_query))
+        print(f"Executing SQL query: {sql_query}")  # Debugging statement
+        result = session.execute(text(sql_query))  # Using the correct execution method
         columns = result.keys()
         data = [dict(zip(columns, row)) for row in result]
         return data
     except Exception as e:
         logging.error(f"Error executing SQL query: {str(e)}")
+        print(f"Error executing SQL query: {str(e)}")  # Debugging statement
         return None
     finally:
         session.close()
+
 
 def format_sql_results(results, question):
     """
@@ -165,6 +167,7 @@ def index():
             print('SQL query is :', sql_query)
             if sql_query:
                 results = execute_sql_query(sql_query)
+                print(results)
                 if results is not None:
                     answer = format_sql_results(results, question)
                 else:
