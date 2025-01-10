@@ -18,7 +18,7 @@ Session = sessionmaker(bind=engine)
 
 # Initialize OpenAI API Key
 # client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
-client = OpenAI(api_key = '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')
+client = OpenAI(api_key = 'sk-svcacct-Hf761fHpn1N9kra1QJTyYeSFFrGe0rat--Qn96ZcOImjeU65CBuhunpe1v7oZG0Q7NJGYwhhjBcPT3BlbkFJpWAuRN4N4uAwJRhLqYDevJi7_HAGWgMlo2jYfFtionksPGAaA64UyPlASQPWTWXC0V6l9xuGrZcA')
 
 
 def get_unique_airports():
@@ -92,6 +92,7 @@ def generate_sql_query(question, airport_code):
             max_tokens=500
         )
         query = completion.choices[0].message.content.strip()
+        print(query)
         
         # Ensure that no unwanted characters are in the query
         query = query.replace("```sql", "").replace("```", "")
